@@ -1,0 +1,24 @@
+
+.chats{
+    height: calc(100vh - 90px);
+    overflow-y: auto;
+    width: 100%;
+}
+.messageBox{
+    overflow-y: hidden;
+}
+
+.messageContainer{
+    padding: 12px;
+position: relative;
+}
+
+@media screen and (max-width:600px) {
+    #chatName{
+        display: none;
+    }
+    #chats{
+
+        width:fit-content !important
+    }
+}
