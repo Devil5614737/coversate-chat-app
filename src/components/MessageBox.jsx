@@ -10,7 +10,7 @@ import { SpinnerComp } from './SpinnerComp';
 
 
 
-const ENDPOINT='http://localhost:4000';
+const ENDPOINT='https://chat-app-backend2.onrender.com';
 
 var socket
 
