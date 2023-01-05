@@ -19,7 +19,6 @@ const createChat=(userId)=>axios.post(`${BASE_URL}/create-chat`,{userId},{header
 
 const sendTheMessage=(content,chatId)=>axios.post(`${BASE_URL}/send-message`,{content,chatId},{headers})
 
-// http://localhost:4000/api/fetch-messages?search=63a076884bd9d3c42fa389fb
 
 const fetchMessasges=(chatId)=>axios.get(`${BASE_URL}/fetch-messages?search=${chatId}`,{headers})
 

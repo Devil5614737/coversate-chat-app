@@ -1,12 +1,10 @@
 
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import ScrollableFeed from 'react-scrollable-feed'
-import { fetchMessasges } from '../api/request';
-import { ChatContext } from '../context/ChatContext';
 import { Message } from './Message';
 
 export const Messages = ({messages}) => {
-  const{selectedChat}=useContext(ChatContext)
+
 
 
 

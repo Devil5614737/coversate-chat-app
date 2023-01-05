@@ -12,7 +12,7 @@ export const SignupComp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [file, setFile] = useState("");
-  const {url}=useCloudinary(file);
+  const {url,loading:imageIsUploading}=useCloudinary(file);
   const[loading,setLoading]=useState(false);
 
 
@@ -22,7 +22,6 @@ export const SignupComp = () => {
     try {
       if(url){
       const {data:token}=await signup(name,email,password,url);
-      console.log(token)
         setLoading(false)
         localStorage.setItem('token',token)
         const decoded=jwtDecode(token);
@@ -54,9 +53,10 @@ export const SignupComp = () => {
     </Box>
     <Box mt={4}>
   <FormLabel>Upload Profile Picture</FormLabel>
+  {imageIsUploading&& <SpinnerComp size={'sm'} color={'blue'}/>}
   <Input  onChange={(e)=>setFile(e.target.files[0])} type='file' />
     </Box>
-    <Button bg={'#00B8F5'} color='white' onClick={handleSignup} mt={4} width={'100%'}>{loading?<SpinnerComp color='white' size={'sm'}/>:"Signup"}</Button>
+    <Button disabled={!name||!email||!password||!url} bg={'#00B8F5'} color='white' onClick={handleSignup} mt={4} width={'100%'}>{loading?<SpinnerComp color='white' size={'sm'}/>:"Signup"}</Button>
 </FormControl>
   )
 }

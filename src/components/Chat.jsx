@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 import { getSender } from "../helpers/chatLogics";
+import {motion} from 'framer-motion'
+import { item } from "../helpers/framerMotion";
 
 export const Chat = ({ chat }) => {
   const { currentUser } = useContext(AuthContext);
@@ -11,7 +13,14 @@ export const Chat = ({ chat }) => {
   let user = chat?.users?.filter((user) => user._id !== currentUser?._id);
   console.log(chat)
   return (
-    <Box
+  <motion.div
+  variants={item}
+  whileTap={{
+    scale:.9
+  }}
+  >
+      <Box
+      
     id='chat'
       onClick={() => setSelectedChat(chat)}
       key={chat._id}
@@ -42,5 +51,6 @@ export const Chat = ({ chat }) => {
           : chat?.chatName}
       </Text>
     </Box>
+  </motion.div>
   );
 };

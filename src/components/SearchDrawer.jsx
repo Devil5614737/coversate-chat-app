@@ -17,6 +17,7 @@ import { ChatContext } from "../context/ChatContext";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { createChat, searchUsers } from "../api/request";
 import { User } from "./User";
+import { SpinnerComp } from "./SpinnerComp";
 
 export const SearchDrawer = ({ isOpen, onClose, btnRef }) => {
   const { setFetchAgain, setSelectedChat, setChats, chats } =
@@ -25,7 +26,8 @@ export const SearchDrawer = ({ isOpen, onClose, btnRef }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const handleSearch = async () => {
+  const handleSearch = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       const { data } = await searchUsers(query);
@@ -66,16 +68,21 @@ export const SearchDrawer = ({ isOpen, onClose, btnRef }) => {
         <DrawerHeader>Search users</DrawerHeader>
 
         <DrawerBody>
-          <Box display={"flex"} columnGap={3}>
+          <form onSubmit={handleSearch} style={{
+            display:'flex',
+            gap:"0px 10px"
+          }} display={"flex"} columnGap={3}>
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="search users"
             />
             <Button onClick={handleSearch}>
-              <MagnifyingGlassIcon width={18} height={18} />
+              {loading?<SpinnerComp color={'blue'} size='sm'/>:
+              <MagnifyingGlassIcon width={25} height={25} />
+              }
             </Button>
-          </Box>
+          </form>
 
           <Box mt={4}>
             {searchResult?.map((user) => (

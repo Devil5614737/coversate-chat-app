@@ -10,6 +10,7 @@ import {
   MenuItem,
   MenuList,
   Text,
+  Tooltip
 } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { BellIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
@@ -40,6 +41,7 @@ export const Navbar = ({ btnRef, onOpen }) => {
           <Text cursor={"pointer"} fontWeight={"bold"} textDecoration="none">
             Conversate
           </Text>
+          <Tooltip label="search users">
           <IconButton
             ref={btnRef}
             onClick={onOpen}
@@ -48,6 +50,7 @@ export const Navbar = ({ btnRef, onOpen }) => {
           >
             <MagnifyingGlassIcon width={18} height={18} />
           </IconButton>
+          </Tooltip>
         </Box>
         <Box display={"flex"} gap={4}>
           <Menu>

@@ -4,7 +4,7 @@ import { io } from 'socket.io-client';
 import { fetchMessasges, sendTheMessage } from '../api/request';
 import { AuthContext } from '../context/AuthContext';
 import { ChatContext } from '../context/ChatContext';
-import { getSender, otherUser } from '../helpers/chatLogics';
+import {  otherUser } from '../helpers/chatLogics';
 import { Messages } from './Messages'
 import { SpinnerComp } from './SpinnerComp';
 
@@ -18,7 +18,7 @@ var socket
 
 export const MessageBox = () => {
   const [text, setText] = useState("");
-  const{selectedChat,setFetchAgain,fetchAgain,setNotification,notification}=useContext(ChatContext);
+  const{selectedChat,setFetchAgain,setNotification,notification}=useContext(ChatContext);
   const{currentUser}=useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const[loading,setLoading]=useState(false)
@@ -91,7 +91,7 @@ useEffect(()=>{
       <Text fontWeight={500}>{otherUser(selectedChat,currentUser)?.name}</Text>
     </Box>
     <Box   mt={4} height={420}>
-      {loading?<SpinnerComp size={'lg'} color='blue'/>:
+      {loading?<SpinnerComp size={'sm'} color='blue'/>:
     <Messages messages={messages}/>
       }
     </Box>
