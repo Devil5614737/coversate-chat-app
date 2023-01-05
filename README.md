@@ -9,3 +9,9 @@ Techs Used :-
 3. Chakra UI
 4. Node.js
 5. MongoDb
+
+
+
+[Backend](https://github.com/Devil5614737/chat-app-backend-2)
+
+[Demo](https://merry-madeleine-8c62a1.netlify.app/)
